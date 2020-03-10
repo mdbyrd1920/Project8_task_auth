@@ -50,7 +50,7 @@ function createUser($username, $password) //
     global $db;
 
     try {
-        $query = "INSERT INTO users (username, password, role_id) VALUES (:username, :password, 2)";
+        $query = "INSERT INTO users (username, password) VALUES (:username, :password)";
         $stmt = $db->prepare($query);
         $stmt->bindParam(':username', $username);
         $stmt->bindParam(':password', $password);
@@ -80,20 +80,4 @@ function updatePassword($password, $userId)
     }
 
     return true;
-}
-
-function changeRole($userId, $roleId)
-{
-    global $db;
-
-    try {
-        $query = "UPDATE users SET role_id = :roleId WHERE id = :userId";
-        $stmt = $db->prepare($query);
-        $stmt->bindParam(':roleId', $roleId);
-        $stmt->bindParam(':userId', $userId);
-        $stmt->execute();
-        return findUserById($userId);
-    } catch (\Exception $e) {
-        throw $e;
-    }
 }
