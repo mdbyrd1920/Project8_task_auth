@@ -10,6 +10,8 @@ include 'inc/header.php';
 
       <h1>Welcome</h1>
       <?php if (isAuthenticated()) : ?>
+
+
       <p class="actions-copy">What would you like to do today?</p>
       <div class="actions-wrapper">
         <ul class="actions">
