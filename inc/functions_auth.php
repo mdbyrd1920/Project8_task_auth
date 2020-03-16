@@ -84,8 +84,9 @@ function setAuthCookie($data, $expTime) {
 
 function decodeAuthCookie($prop = null)
 {
-  try {
 
+  try {
+    
     Firebase\JWT\JWT::$leeway=1;
     $cookie = Firebase\JWT\JWT::decode(
       request()->cookies->get('auth'),
