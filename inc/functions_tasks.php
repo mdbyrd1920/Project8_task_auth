@@ -25,12 +25,14 @@ function getCompleteTasks()
 {
     return getTasks('status=1');
 }
+
+
 function getTask($task_id)
 {
     global $db;
 
     try {
-        $statement = $db->prepare('SELECT id, task, status FROM tasks WHERE id=:id');
+        $statement = $db->prepare('SELECT id, task, status, owner_id FROM tasks WHERE id=:id');
         $statement->bindParam('id', $task_id);
         $statement->execute();
         $task = $statement->fetch();
@@ -40,14 +42,15 @@ function getTask($task_id)
     }
     return $task;
 }
-function createTask($data)
+function createTask($data, $ownerId)
 {
     global $db;
 
     try {
-        $statement = $db->prepare('INSERT INTO tasks (task, status) VALUES (:task, :status)');
+        $statement = $db->prepare('INSERT INTO tasks (task, status, owner_id) VALUES (:task, :status, :owner_id)');
         $statement->bindParam('task', $data['task']);
         $statement->bindParam('status', $data['status']);
+        $statement->bindParam('owner_id', $ownerId);
         $statement->execute();
     } catch (Exception $e) {
         echo "Error!: " . $e->getMessage() . "<br />";
