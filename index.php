@@ -5,6 +5,8 @@ $pageTitle = "Time Tracker";
 $page = null;
 
 include 'inc/header.php';
+
+
 ?>
     <div class="col-container actions-container">
 

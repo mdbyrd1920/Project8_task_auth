@@ -2,7 +2,9 @@
 
 function isAuthenticated()
 {
-    return decodeAuthCookie();
+  //global $session;
+  //$session->get('auth_logged_in, false');
+  return decodeAuthCookie();
 }
 
 function requireAuth()
@@ -88,7 +90,7 @@ function decodeAuthCookie($prop = null)
 {
 
   try {
-    
+
     Firebase\JWT\JWT::$leeway=1;
     $cookie = Firebase\JWT\JWT::decode(
       request()->cookies->get('auth'),
