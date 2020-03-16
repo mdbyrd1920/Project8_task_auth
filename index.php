@@ -48,7 +48,6 @@ include 'inc/header.php';
                 Login
               </a>
             </li>
+      <?php endif; ?>
   </div>
-<?php
-endif;
-include("inc/footer.php"); ?>`
+<?php include("inc/footer.php"); ?>

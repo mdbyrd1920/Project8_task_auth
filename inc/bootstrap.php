@@ -4,7 +4,7 @@ require_once __DIR__ . '/functions_tasks.php';
 require_once __DIR__ . '/functions_user.php';
 require_once __DIR__ . '/functions_auth.php';
 
-//$dotenv = \Dotenv\Dotenv::create(__DIR__);
+$dotenv = \Dotenv\Dotenv::create(__DIR__);
 //$dotenv->load();
 
 try {
@@ -34,10 +34,10 @@ function request() {
 function redirect($path, $extra = []) {
     $response = \Symfony\Component\HttpFoundation\Response::create(null, \Symfony\Component\HttpFoundation\Response::HTTP_FOUND, ['Location' => $path]);
     if (key_exists('cookies', $extra)) {
-      foreach ($extra['cookies'] as $cookie) {
+      //foreach ($extra['cookies'] as $cookie) {
         $response->headers->setCookie($cookie);
       }
-    }
+    //}
     $response->send();
     exit;
 }

@@ -16,6 +16,8 @@ if (!isAuthenticated()) {
   }
 
 }
+
+/*
 function isAdmin()
 {
 if (!isAuthenticated()) {
@@ -32,7 +34,7 @@ function requireAdmin()
     $session->getFlashBag()->add('error', 'Not Authorized');
     redirect('/login.php');
   }
-}
+}*/
 
 function isOwner($ownerId)
 {
